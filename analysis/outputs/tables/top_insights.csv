@@ -1,0 +1,11 @@
+insight_number,text,overall_quality,specificity,evidence_based
+insight2,"At 5am, if the temperature is -8.5 degrees we have the highest number of rentals",0.9935483870967742,2.4838709677419355,0.5806451612903226
+insight2,Friday and Saturday have the greatest number of rentals.,0.9935483870967742,2.4838709677419355,0.5806451612903226
+insight2,More rentals when it is warmer BUT decreases after a certain temp,0.9935483870967742,2.4838709677419355,0.5806451612903226
+insight2,Friday saturday increase in sales,0.9935483870967742,2.4838709677419355,0.5806451612903226
+insight2,The effect on rentals increases significantly in the morning. It is peaking around 09:00,0.9935483870967742,2.4838709677419355,0.5806451612903226
+insight2,Bike-sharing tends to be much more popular in the early evening than at any time in the morning,0.9935483870967742,2.4838709677419355,0.5806451612903226
+insight2,the higher the temp the higher the rentals,0.9935483870967742,2.4838709677419355,0.5806451612903226
+insight2,15,0.9935483870967742,2.4838709677419355,0.5806451612903226
+insight2,if it is warmer people will use the bike for longer.,0.9935483870967742,2.4838709677419355,0.5806451612903226
+insight2,There are far fewer rentals when it's not a workday.,0.9935483870967742,2.4838709677419355,0.5806451612903226

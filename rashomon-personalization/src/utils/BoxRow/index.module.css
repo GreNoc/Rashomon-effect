@@ -1,0 +1,10 @@
+.boxRow {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    width: 100%;
+}
+
+.boxRow > * {
+    flex-basis: 100%;
+}

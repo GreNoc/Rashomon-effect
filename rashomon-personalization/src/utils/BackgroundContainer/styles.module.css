@@ -1,0 +1,31 @@
+.pageWrapper {
+  background-color: white;
+  padding: 2rem;
+  width: 100%;
+  display: flex;
+  justify-items: center;
+}
+
+.containerWrapper {
+  width: 100%;
+  min-width: 75vw;
+  margin: 0 auto;
+}
+
+.container {
+  width: 100%;
+  min-width: 100%;
+  min-height: 30vh;
+  background-color: #f3f4f6;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin: 0;
+}
+
+.scrollArea {
+  min-width: 100%;
+  text-align: left;
+  place-items: center;
+  padding: 1rem;
+  margin: 0;
+}

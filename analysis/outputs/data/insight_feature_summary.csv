@@ -1,0 +1,15 @@
+group,feature,percentage
+Control,Numerical,54.285714285714285
+Control,Comparative,30.714285714285715
+Control,Conditional,19.28571428571429
+Control,Temporal,21.428571428571427
+Control,Temperature,27.142857142857142
+Control,Weather,28.57142857142857
+Control,Causal,2.857142857142857
+Treatment,Numerical,53.79310344827586
+Treatment,Comparative,42.758620689655174
+Treatment,Conditional,26.89655172413793
+Treatment,Temporal,35.172413793103445
+Treatment,Temperature,28.965517241379313
+Treatment,Weather,32.41379310344827
+Treatment,Causal,0.6896551724137931

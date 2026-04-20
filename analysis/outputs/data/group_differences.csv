@@ -1,0 +1,6 @@
+construct,statistic,p_value,significant,cohens_d,interpretation
+PH_score,476.5,0.245,FALSE,0.329,No significant difference
+PU_score,411.5,0.936,FALSE,-0.098,No significant difference
+PEOU_score,510.5,0.096,FALSE,0.432,No significant difference
+PCE_score,354.5,0.413,FALSE,-0.129,No significant difference
+PIN_score,476.5,0.259,FALSE,0.149,No significant difference

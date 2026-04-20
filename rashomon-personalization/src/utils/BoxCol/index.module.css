@@ -1,0 +1,12 @@
+.boxCol {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 10px;
+    flex: 1 1 0;
+    width: 100%;
+}
+
+.boxCol > * {
+    flex-basis: 100%;
+}

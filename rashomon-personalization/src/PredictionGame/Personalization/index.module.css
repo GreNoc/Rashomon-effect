@@ -1,0 +1,33 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, );  /* Semi-transparent black */
+    z-index: 999;  /* Behind popup but on top of other elements */
+}
+
+.greenOverlay {
+    background-color: rgba(40, 167, 69, 0.5); /* Green for +1 */
+}
+
+.redOverlay {
+    background-color: rgba(220, 53, 69, 0.5); /* Red for -1 */
+}
+
+/* Popup styling */
+.popup {
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -30%);
+    color: #fff;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-size: 1.5rem;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;  /* On top of overlay */
+    background-color: white
+}

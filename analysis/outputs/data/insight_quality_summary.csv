@@ -1,0 +1,3 @@
+group,n_insights,mean_quality,sd_quality,pct_numerical,pct_comparative,pct_temporal,pct_causal
+Control,140,1.84,1.46,54.29,30.71,21.43,2.86
+Treatment,145,2.21,1.57,53.79,42.76,35.17,0.69

@@ -1,0 +1,3 @@
+group,n,age_mean,age_sd,pct_male,pct_female,pct_experienced,countries
+Control,28,43.1,8.9,50,50,71.4,5
+Treatment,29,42.4,11.5,62.1,37.9,69,5

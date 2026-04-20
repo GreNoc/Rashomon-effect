@@ -1,0 +1,16 @@
+.markdown {
+    border-color: #dc3545;
+}
+.markdown h1,
+.markdown h2,
+.markdown h3,
+.markdown h4,
+.markdown h5,
+.markdown h6,
+.markdown p,
+.markdown li,
+.markdown a,
+.markdown blockquote,
+.markdown code {
+    color: red;
+}

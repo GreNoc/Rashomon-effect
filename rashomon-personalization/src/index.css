@@ -1,0 +1,85 @@
+body {
+  background-color: #FFFFFF; /* Very light gray for subtle contrast */
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+
+.Background {
+  display: flex;
+  flex-direction: row; /* Align children in a row (side by side) */
+  justify-content: center; /* Center them horizontally in the background */
+  align-items: center; /* Center them vertically */
+  min-width: 80vw;
+  min-height: 40vw;
+  background-color: #e0e0e0; /* Light gray background for the container */
+  border-radius: 10px;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); /* Softer shadow for depth */
+  text-align: center;
+}
+
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 10px;
+  text-align: left;
+}
+
+button {
+  border-radius: 8px;
+  border: 2px solid #555; /* Medium gray border */
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #fff; /* White background */
+  color: #333; /* Darker gray for text */
+  cursor: pointer;
+  transition: border-color 0.1s, background-color 0.1s, color 0.1s, box-shadow 0.1s;
+}
+
+
+button:hover {
+  background-color: #555; /* Medium gray on hover */
+  color: #fff; /* White text on hover */
+  border-color: #555; /* Keep the border matching the background */
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15); /* Add shadow on hover for emphasis */
+}
+
+
+button:focus,
+button:focus-visible {
+  outline: 2px solid #333; /* Darker gray focus ring for accessibility */
+}
+
+p {
+  color: #666; /* Lighter gray for body text */
+}
+
+.homeButtonContainer {
+  display: flex;
+  justify-content: flex-end; /* Align items to the right */
+  align-items: center; /* Optional: vertically center the items */
+  height: 100px; /* Set a height or any dimension needed */
+}
+
+.homeButton {
+  background-color: transparent; /* Make the button background transparent */
+  border: none; /* Remove border */
+  padding: 0; /* Remove padding */
+  cursor: pointer;
+  display: inline-block; /* Ensure the button behaves as an inline-block */
+}
+
+.homeButton:hover {
+  background-image: linear-gradient(180deg, rgba(255,0,0,1) 0%, rgba(255,239,0,1) 50%, rgba(255,255,255,0) 100%);
+  border-color: #555; /* Keep the border matching the background */
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15); /* Add shadow on hover for emphasis */
+}
+
+/* Image specific styles */
+.homeButtonImage {
+  width: 100px; /* Customize the size of the PNG */
+  height: auto; /* Maintain aspect ratio */
+}

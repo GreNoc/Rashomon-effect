@@ -1,0 +1,40 @@
+.box {
+    display: flex;
+    border-radius: 16px;
+    padding-inline: 10px;
+    padding-block: 10px;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 100%;
+}
+
+.boxRed {
+    background-color: #fbf5ffff;
+}
+
+.boxBlue {
+    background-color: #eff6ffff;
+}
+
+.boxGreen {
+    background-color: #f0fdf4ff
+;
+}
+
+.boxYellow {
+    background-color: #fff6dcff
+;
+}
+
+.boxGrey {
+    background-color: #fbfcfeff
+;
+}
+
+.boxWhite {
+    background-color: rgba(255, 255, 255, 1);
+}
+
+.boxTransparent {
+    background-color: inherit;
+}

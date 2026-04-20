@@ -1,0 +1,62 @@
+.container .btnHolder {
+    justify-content: center;
+    display: flex;
+}
+
+button {
+    color: #333;
+    cursor: pointer;
+    transition: border-color 0.1s, background-color 0.1s, color 0.1s, box-shadow 0.1s;
+}
+.nextButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 0.6em 1.2em;
+    font-size: 1.2em;
+    font-weight: 600;
+    font-family: inherit;
+    border-radius: 8px;
+    border: 2px solid #555;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background-color: #fff;
+    color: black;
+    margin-block: 1rem;
+
+    &:not(:disabled):hover {
+        background-color: #0051b3;
+        color: white;
+        transform: translateY(-1px);
+    }
+
+    &:not(:disabled):active {
+        transform: translateY(0);
+    }
+
+    &:disabled {
+        background-color: #aaaaaa;
+        color: black;
+        cursor: not-allowed;
+        transform: none;
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(0, 112, 243, 0.3);
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.spinner {
+    animation: spin 1s linear infinite;
+}

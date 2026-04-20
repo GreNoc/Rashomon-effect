@@ -1,0 +1,4 @@
+test,statistic,p_value,significant
+Age,437,0.626,FALSE
+Gender,0.42383659174876787,0.515,FALSE
+Experience,0.09359605911330061,0.954,FALSE

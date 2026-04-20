@@ -1,0 +1,98 @@
+.likertScale {
+  margin: 0 1rem;
+}
+.likertScale .likertButton {
+  padding: 5px 10px;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.likertScale .likertButton.selected {
+  background-color: #4caf50; /* Example 'selected' state color, green */
+  color: white;
+}
+
+.likertScale .likertButton:not(.selected):hover {
+  background-color: #f0f0f0; /* Lighter gray when hovered but not selected */
+}
+
+.likertScale .submit-button {
+  padding: 12px 25px;
+  margin: 10px;
+  background-color: #007bff; /* Different color for submit button */
+  color: white;
+  border: none;
+  cursor: pointer;
+  align-items: center;
+}
+
+.likertScale .submit-button:disabled {
+  background-color: #aaa; /* Disabled state */
+  cursor: not-allowed;
+}
+
+.likertScale .submit-button:hover:not{
+  background-color: #0056b3; /* Darker blue when hovered */
+}
+
+.likertScaleContainer {
+  display: flex;
+  align-items: center;
+}
+
+.submit-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.leftLikertLabel {
+  flex: 1;
+  text-align: center;
+  margin-inline: 0.5rem;
+  padding-bottom: 1rem;
+}
+
+.rightLikertLabel {
+  flex: 1;
+  text-align: center;
+  margin-inline: 0.5rem;
+  padding-bottom: 1rem;
+}
+
+button {
+  border-radius: 8px;
+  border: 2px solid #555; /* Medium gray border */
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #fff; /* White background */
+  color: #333; /* Darker gray for text */
+  cursor: pointer;
+  transition: border-color 0.1s, background-color 0.1s, color 0.1s, box-shadow 0.1s;
+  margin-inline: 0.5rem;
+  &.selected {
+    background-color: #4caf50; /* Example 'selected' state color, green */
+    color: white;
+  }
+}
+
+
+button:hover {
+  border-color: #555; /* Keep the border matching the background */
+  border-width: thick;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15); /* Add shadow on hover for emphasis */
+}
+
+
+button:focus,
+button:focus-visible {
+  outline: 2px solid #333; /* Darker gray focus ring for accessibility */
+}
+
+p {
+  color: #666; /* Lighter gray for body text */
+}
