@@ -2,16 +2,15 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import OneHotEncoder, FunctionTransformer
-from sklearn.pipeline import Pipeline
+# from sklearn.pipeline import Pipeline
 from interpret.glassbox import ExplainableBoostingRegressor
-from interpret import show
+# from interpret import show
 from sklearn.model_selection import ParameterGrid
 import os
 import pickle
 import matplotlib.pyplot as plt
 import numpy as np
 
-import os
 import sys
 from typing import List, Tuple
 from loguru import logger
@@ -243,7 +242,7 @@ def debug_interaction_issue(ebm: ExplainableBoostingRegressor):
     ebm_global = ebm.explain_global("EBM")
     feat_list = ebm_global.feature_names
     for feat in feat_list:
-        if not "&" in feat:
+        if "&" not in feat:
             continue
         else:
             term1, term2 = feat.split(" & ")
@@ -430,8 +429,8 @@ def create_cat_plot(model_path, ebm_global, index, feat):
     y_values = np.append(
         ebm_global.data(index)["scores"], ebm_global.data(index)["scores"][-1]
     )
-    x_values = np.array(ebm_global.data(index)["names"])
-    x_labels = list(range(len(x_values)))
+    # x_values = np.array(ebm_global.data(index)["names"])
+    # x_labels = list(range(len(x_values)))
 
     plt.xlim(0, 1)
     plt.xticks(ticks=[0.25, 0.75], labels=[0, 1])
