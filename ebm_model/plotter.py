@@ -1,5 +1,4 @@
 import matplotlib.pyplot as plt
-import numpy as np
 import json
 
 
@@ -61,9 +60,6 @@ def plot_numerical(plot):
     - data: list[dict] - The data to plot, should include information necessary
                          for plotting numerical plots.
     """
-
-    if plot["feat_name"] == "num__hr":
-        y_values = y_values + 430
 
     plt.figure()
     plt.step(plot["X"], plot["Y"], where="post")
