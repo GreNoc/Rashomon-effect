@@ -183,7 +183,7 @@ def build_gam_terms(feature_names: list[str], model_params, params) -> TermList:
     for i, name in enumerate(feature_names):
         if name in categorical_cols:
             terms.append(f(i, penalties=model_params["penalties"]))
-        if name in params["monotonicity_constraints"] and name not in params["exclude"]:
+        elif name in params["monotonicity_constraints"] and name not in params["exclude"]:
             terms.append(s(i, n_splines=model_params["n_splines"], penalties=model_params["penalties"], constraints="monotonic_inc"))
         else:
             terms.append(s(i, n_splines=model_params["n_splines"], penalties=model_params["penalties"]))
@@ -242,12 +242,12 @@ def train_model(
 
         feature_names = [
             feat for feat in ct.get_feature_names_out()
-            if feat not in config.parameters["exclude"]
+            if feat not in params["exclude"]
         ]
         excluded_features_index = [
             list(ct.get_feature_names_out()).index(feat)
             for feat in ct.get_feature_names_out()
-            if feat in config.parameters["exclude"]
+            if feat in params["exclude"]
         ]
         X_train_selected = np.delete(X_train, excluded_features_index, axis=1)
         X_test_selected = np.delete(X_test, excluded_features_index, axis=1)
@@ -294,7 +294,7 @@ def train_model(
         score = model.score(X_test_selected, y_test)
         logger.debug(f"R^2 score: {score:.6f} Params: {params}")
 
-        model_dir = _params_to_dir_name({**params, **config.parameters})
+        model_dir = _params_to_dir_name(params)
         model_dir += f"__score_{score:.6f}"
         model_path = f"{config.model_save_path}/{model_dir}"
         os.makedirs(model_path, exist_ok=True)
@@ -670,9 +670,32 @@ def _create_interaction_plot(model_path, feat_data: dict, feat_name: str):
             shading="auto",
         )
         fig.colorbar(im, ax=ax)
-        plt.xlabel(feature_name_left)
-        plt.ylabel(feature_name_right)
-        plt.title(f"Feature: {feature_name_right} x {feature_name_left}")
+        ax.set_xlabel(config.name_mapping.get(feature_name_left, feature_name_left))
+        ax.set_ylabel(config.name_mapping.get(feature_name_right, feature_name_right))
+
+        if feature_name_left in CATEGORICAL_FEATURES:
+            ax.set_xticks(feat_data["left_names"])
+            ax.set_xticklabels(["No", "Yes"])
+        elif feature_name_left == "num__weekday":
+            ax.set_xticks(range(7))
+            ax.set_xticklabels([
+                "Sunday", "Monday", "Tuesday", "Wednesday",
+                "Thursday", "Friday", "Saturday",
+            ])
+
+        if feature_name_right in CATEGORICAL_FEATURES:
+            ax.set_yticks(feat_data["right_names"])
+            ax.set_yticklabels(["No", "Yes"])
+        elif feature_name_right == "num__weekday":
+            ax.set_yticks(range(7))
+            ax.set_yticklabels([
+                "Sunday", "Monday", "Tuesday", "Wednesday",
+                "Thursday", "Friday", "Saturday",
+            ])
+
+        ax.set_title(
+            f"Feature: {config.name_mapping.get(feat_name, feat_name)}"
+        )
         plt.savefig(f"{model_path}/jpg/{safe_feat_name}.jpg", format="jpg", dpi=300)
         plt.savefig(f"{model_path}/svg/{safe_feat_name}.svg", format="svg")
     except FileNotFoundError as e:

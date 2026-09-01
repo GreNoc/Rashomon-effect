@@ -52,6 +52,9 @@ Difference Between your Estimate and the Correct Answer: *${diff}*
 
             <div className={styles.popup}>
                 <MarkdownBox markdown={mdMessage}/>
+                <div className={styles.popupActions}>
+                    <button type="button" className={styles.closeButton} onClick={closePopup}>Close</button>
+                </div>
             </div>
         </>
     );

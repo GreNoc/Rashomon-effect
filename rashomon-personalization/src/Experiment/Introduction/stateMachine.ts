@@ -61,11 +61,11 @@ export const stateMachine = createMachine(
       },
       WelcomeToCityRide: {
           on: {
-              toIntroTask1: {
+              toYourTask: {
                   actions: [
                       {type: "logEvent"}
                   ],
-                  target: "IntroTask1"
+                  target: "YourTask"
               }
           }
       },

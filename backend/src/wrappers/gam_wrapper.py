@@ -36,14 +36,7 @@ class GAMWrapper(ModelWrapper):
         """
         Train the model with its parameters and save the global_explanation.
         """
-        # eventuell auch splines anpassen bzw. erhöhen in den spline-Funktionen
-        # XXX: gridsearch anstelle von fit probieren für bessere Ergebnisse, um Modell in das Rashomon Set aufnehmen zu können.
-        # gridsearch() steigert R² score um ca. 1% ggü. fit()
         self._model.fit(X, y)
-        # Needed by _explain_global() to look up the real, discrete values
-        # a categorical feature takes (e.g. [0., 1.]), since pyGAM's
-        # generate_X_grid() has no concept of "categorical" and would
-        # otherwise linearly interpolate 100 points between -0.5 and 1.5.
         self._X_train = X
         self._global_explanation = self._explain_global()
     
@@ -134,24 +127,9 @@ class GAMWrapper(ModelWrapper):
         return model_explanation
 
     def _is_categorical(self, feat_idx: int) -> bool:
-        """
-        Whether the feature at this index is one of the model's known
-        categorical features. We can't rely on isinstance(term, FactorTerm)
-        for this in general: a TensorTerm's subterms are always SplineTerm,
-        even when te() wraps a feature that's categorical, so pyGAM gives
-        no signal there that the feature is discrete.
-        """
         return self._feature_names[feat_idx] in self._categorical_features
 
     def _categorical_main_effect(self, term_idx: int, feat_idx: int):
-        """
-        Evaluates a FactorTerm's partial dependence at the feature's real,
-        observed category values (e.g. [0., 1.]) instead of pyGAM's default
-        generate_X_grid(), which linearly interpolates 100 points between
-        -0.5 and 1.5 regardless of the term being categorical — producing
-        a misleading pseudo-continuous shape function for what is actually
-        a 2-level (or k-level) discrete feature.
-        """
         categories = np.unique(self._X_train[:, feat_idx])
         XX = np.zeros((len(categories), self._X_train.shape[1]))
         XX[:, feat_idx] = categories
@@ -159,24 +137,10 @@ class GAMWrapper(ModelWrapper):
         return categories, scores
 
     def _interaction_grid(self, term_idx: int, term: TensorTerm, feat_idx_left: int, feat_idx_right: int):
-        """
-        Builds the (left_names, right_names, scores_2d) grid for a
-        TensorTerm, using real discrete category values on any axis that
-        is categorical (per self._categorical_features) instead of
-        generate_X_grid()'s default 100-point linear interpolation. This
-        matters because build_gam_terms() pairs num__hr with
-        cat__workingday_1 as an actual interaction, and without this fix
-        that categorical axis would render as a fake continuum from 0 to 1
-        with no "No"/"Yes" structure.
-        """
         left_is_cat = self._is_categorical(feat_idx_left)
         right_is_cat = self._is_categorical(feat_idx_right)
 
         if not left_is_cat and not right_is_cat:
-            # Fast path: identical to the original behavior, since
-            # generate_X_grid already does the right thing for two
-            # numerical features (verified to produce a correctly
-            # row-major (left, right) grid).
             XX = self._model.generate_X_grid(term=term_idx)
             y_values = self._model.partial_dependence(term=term_idx, X=XX)
             left_names = np.unique(XX[:, feat_idx_left])

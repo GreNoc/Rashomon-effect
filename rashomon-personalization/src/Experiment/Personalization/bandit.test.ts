@@ -1,5 +1,5 @@
 import {test, expect} from "vitest"
-import {updateMu, updateSigma2} from "./bandit";
+import {updateMu, updateSigma2, getRewardFromDifference} from "./bandit";
 
 test('test negative rewards decrease mu', () => {
   expect(
@@ -20,4 +20,11 @@ test('test updates decrease variance', () => {
     expect(
         updateSigma2([0, 0], [1, 1], [1, 0], 1)[0]
     ).to.be.lessThan(1);
+});
+
+test('test reward is positive when the user estimate is close to the value', () => {
+    expect(getRewardFromDifference(120, 200)).toBe("+1");
+    expect(getRewardFromDifference(150, 200)).toBe("+1");
+    expect(getRewardFromDifference(300, 200)).toBe("-1");
+    expect(getRewardFromDifference(200, 200)).toBe("+1");
 });

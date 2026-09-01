@@ -6,6 +6,15 @@ export type Encoding = number[]
 
 export type Reward = "+1" | "-1"
 
+export function getRewardFromDifference(userEstimate: number, trueValue: number, tolerance = 100): Reward {
+  if (!Number.isFinite(userEstimate) || !Number.isFinite(trueValue)) {
+    return "-1";
+  }
+
+  const difference = Math.abs(userEstimate - trueValue);
+  return difference < tolerance ? "+1" : "-1";
+}
+
 const configurationUniverse = normalizedData.metaData.hyperparameterLevels
 
 export interface UserContext {
